@@ -1,2 +1,2 @@
 # C-Programming-Practical-Assignments-NSEC
-Collection of All The Days + 3 Projects(Tic Tac Toe + Contacts Management + Calender)
+Collection of All The Days + Few Special Programs + 3 Projects(Tic Tac Toe + Contacts Management + Calender)
