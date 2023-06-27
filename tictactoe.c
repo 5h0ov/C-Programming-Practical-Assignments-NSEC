@@ -1,6 +1,6 @@
 #include <stdio.h>
 char board[3][3];
-int i,j;
+int i,j,count=0;
 
 void initialize_board()
 {
@@ -48,25 +48,33 @@ int check_win()
     return 0;
 }
 
-void main()
+int main()
 {
     int player=1,choice,r,c;
     char mark;
     initialize_board();
-    printf("\nEnter your numbers according to the orientation below:-\n");
-    printf(" 1 | 2 | 3 \n");
-    printf("-----------\n");
-    printf(" 4 | 5 | 6 \n");
-    printf("-----------\n");
-    printf(" 7 | 8 | 9 \n\n\n");
+    
     do 
     {
+        count++;
+        printf("\nEnter your numbers according to the orientation below:-\n");
+        printf(" 1 | 2 | 3 \n");
+        printf("-----------\n");
+        printf(" 4 | 5 | 6 \n");
+        printf("-----------\n");
+        printf(" 7 | 8 | 9 \n\n\n");
         print_board();
         player = (player % 2) ? 1: 2;
         printf("Player %d, Enter a number from 1 to 9 to place your mark: ",player);
         scanf("%d",&choice);
+        printf("\n");
         r = --choice / 3;
         c = choice % 3;
+        if(count>=10)
+        {
+            printf("Draw!\n");
+            return 0;
+        }
         if(board[r][c]==' ')
         {
             mark = (player==1)? 'X' : 'O';
@@ -82,6 +90,5 @@ void main()
         printf("Player 1(X) wins!\n");
     else if(check_win()==2)
         printf("Player 2(O) wins!\n");
-    else
-        printf("Draw!\n");
+
 }
