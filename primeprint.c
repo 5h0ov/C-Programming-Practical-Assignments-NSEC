@@ -13,12 +13,8 @@ void main()
         {
         if(i%j==0)
             break;
-        else
-            continue;
         }
         if(j==(sq+1))
             printf("%d ",i);
-        else
-            continue;
     }
 }
