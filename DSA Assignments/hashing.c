@@ -100,35 +100,40 @@ void insertChaining(HashTable *hashTable, int key) {
 }
 
 // Display hash table
-void displayHashTable(HashTable *hashTable) {
+void displayHashTable(HashTable *hashTable, int chain) {
     for (int i = 0; i < hashTable->size; i++) {
         printf("[%d]: ", i);
 
         Node *temp = hashTable->keys[i];
         while (temp != NULL) {
-            printf("%d -> ", temp->key);
+            if(chain == 1)
+                printf("%d -> ", temp->key);
+            else
+                printf("%d", temp->key);
             temp = temp->next;
         }
 
-        printf("NULL\n");
+        if(chain == 1)
+            printf("NULL");
+        printf("\n");
     }
 }
 
 int main() {
     HashTable hashTable;
-    int keys[] = {25, 35, 45, 55, 65, 75, 85};
+    int keys[] = {25, 32, 45, 55, 65, 76, 85};
     int numKeys = sizeof(keys) / sizeof(keys[0]);
+    int chain = 0;  // 1 for chaining, 0 for others
 
     initializeHashTable(&hashTable, SIZE);
 
     for (int i = 0; i < numKeys; i++) {
-        // insertLinearProbing(&hashTable, keys[i]);
+        insertLinearProbing(&hashTable, keys[i]);
         // insertQuadraticProbing(&hashTable, keys[i]);
         // insertDoubleHashing(&hashTable, keys[i]);
-        insertChaining(&hashTable, keys[i]);      
+        // insertChaining(&hashTable, keys[i]);      
     }
 
-    displayHashTable(&hashTable);
-
+    displayHashTable(&hashTable, chain);
     return 0;
 }
