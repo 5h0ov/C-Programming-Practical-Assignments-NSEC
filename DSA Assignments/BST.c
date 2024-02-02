@@ -137,7 +137,9 @@ void deleteNode()
             parent->right = current->left;
     
         free(current);
-    } else {
+    } 
+    else 
+    {
         // Node with two children
         struct Node* temp = minValueNode();
         current->data = temp->data;
